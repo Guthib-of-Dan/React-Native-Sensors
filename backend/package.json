@@ -1,0 +1,25 @@
+{
+  "type": "module",
+  "scripts": {
+    "build:docs": "npx tsx src/index.ts PORT=80 BUILD_DOCS=true",
+    "build:proto": "npx pbjs -o proto/dist/websockets.js -t static-module -w es6 proto/src/websockets.proto && npx pbts",
+    "start": "node dist/index.mjs PORT=9001 BUILD_DOCS=false",
+    "build:code": "preprocess \"--default-s=/*<DEV>*/\" \"--default-e=/*</DEV>*/\" --dirs: \"<src|code-tmp>\" && node bundle.mjs && rm -rf code-tmp && echo Success"
+  },
+  "dependencies": {
+    "@sinclair/typebox": "^0.34.41",
+    "@types/node": "^24.3.1",
+    "@ublitzjs/core": "^0.1.0",
+    "@ublitzjs/openapi": "^0.0.3",
+    "@ublitzjs/payload": "^0.0.1",
+    "@ublitzjs/preprocess": "github:ublitzjs/preprocess#v0.0.3",
+    "@ublitzjs/router": "^0.1.0",
+    "ajv": "^8.17.1",
+    "esbuild": "^0.25.9",
+    "tsx": "^4.20.5"
+  },
+  "devDependencies": {
+    "protobufjs": "^7.5.4",
+    "protobufjs-cli": "^1.1.3"
+  }
+}

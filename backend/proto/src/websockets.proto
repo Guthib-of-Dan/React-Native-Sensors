@@ -1,0 +1,6 @@
+syntax = "proto3";
+package WSSchemas;
+
+message Hello {
+  string hello = 0;
+}
